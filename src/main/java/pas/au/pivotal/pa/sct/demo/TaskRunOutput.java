@@ -3,8 +3,8 @@ package pas.au.pivotal.pa.sct.demo;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "TASKRUN")
-public class TaskRun
+@Table (name = "TASKRUNOUTPUT")
+public class TaskRunOutput
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,11 +12,11 @@ public class TaskRun
 
     private String output;
 
-    public TaskRun()
+    public TaskRunOutput()
     {
     }
 
-    public TaskRun(String output) {
+    public TaskRunOutput(String output) {
         this.output = output;
     }
 
@@ -38,7 +38,7 @@ public class TaskRun
 
     @Override
     public String toString() {
-        return "TaskRun{" +
+        return "TaskRunOutput{" +
                 "id=" + id +
                 ", output='" + output + '\'' +
                 '}';

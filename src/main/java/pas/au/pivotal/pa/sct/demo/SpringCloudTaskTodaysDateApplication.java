@@ -18,7 +18,7 @@ public class SpringCloudTaskTodaysDateApplication  {
 	private static final Log logger = LogFactory.getLog(SpringCloudTaskTodaysDateApplication.class);
 
 	@Autowired
-	private TaskRepository taskRepository;
+	private TaskRunRepository taskRunRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringCloudTaskTodaysDateApplication.class, args);
@@ -28,7 +28,7 @@ public class SpringCloudTaskTodaysDateApplication  {
 	public void init()
 	{
 		String execDate = new SimpleDateFormat().format(new Date());
-		taskRepository.save(new TaskRun("Executed at " + execDate));
+		taskRunRepository.save(new TaskRunOutput("Executed at " + execDate));
 		logger.info("Executed at : " + execDate);
 	}
 
