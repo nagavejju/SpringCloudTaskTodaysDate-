@@ -3,17 +3,17 @@ package pas.au.pivotal.pa.sct.demo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.task.configuration.EnableTask;
 
+import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@SpringBootApplication
 @EnableTask
-public class SpringCloudTaskTodaysDateApplication implements CommandLineRunner {
+@SpringBootApplication
+public class SpringCloudTaskTodaysDateApplication  {
 
 	private static final Log logger = LogFactory.getLog(SpringCloudTaskTodaysDateApplication.class);
 
@@ -24,10 +24,12 @@ public class SpringCloudTaskTodaysDateApplication implements CommandLineRunner {
 		SpringApplication.run(SpringCloudTaskTodaysDateApplication.class, args);
 	}
 
-	@Override
-	public void run(String... strings) throws Exception {
+	@PostConstruct
+	public void init()
+	{
 		String execDate = new SimpleDateFormat().format(new Date());
 		taskRepository.save(new TaskRun("Executed at " + execDate));
 		logger.info("Executed at : " + execDate);
 	}
+
 }

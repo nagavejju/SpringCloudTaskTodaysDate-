@@ -1,11 +1,9 @@
 package pas.au.pivotal.pa.sct.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table (name = "TASKRUN")
 public class TaskRun
 {
     @Id
@@ -16,7 +14,6 @@ public class TaskRun
 
     public TaskRun()
     {
-
     }
 
     public TaskRun(String output) {
@@ -37,5 +34,13 @@ public class TaskRun
 
     public void setOutput(String output) {
         this.output = output;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskRun{" +
+                "id=" + id +
+                ", output='" + output + '\'' +
+                '}';
     }
 }
