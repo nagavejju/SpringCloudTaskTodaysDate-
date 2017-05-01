@@ -11,14 +11,19 @@ import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@EnableTask
 @SpringBootApplication
+@EnableTask
 public class SpringCloudTaskTodaysDateApplication  {
 
 	private static final Log logger = LogFactory.getLog(SpringCloudTaskTodaysDateApplication.class);
 
-	@Autowired
 	private TaskRunRepository taskRunRepository;
+
+	@Autowired
+	public SpringCloudTaskTodaysDateApplication (TaskRunRepository taskRunRepository)
+	{
+		this.taskRunRepository = taskRunRepository;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringCloudTaskTodaysDateApplication.class, args);
